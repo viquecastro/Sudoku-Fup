@@ -43,7 +43,13 @@ def organizarEntradas(data):
 
 
 # 03 - Função que acessa um arquivo e retorna uma lista com as jogadas/dicas contidas nele:
-
+def acessarArquivo(arq):
+    l = []
+    data = open(arq, 'r')
+    for valor in data:
+        valor = valor.strip()
+        l.append(valor)
+    return l
 
 # 04 - Função que verifica se as jogadas contidas em uma lista ou inseridas pelo jogador
 # estão dentro das regras do jogo:
