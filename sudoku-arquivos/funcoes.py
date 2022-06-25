@@ -54,6 +54,99 @@ def acessarArquivo(arq):
 # 04 - Função que verifica se as jogadas contidas em uma lista ou inseridas pelo jogador
 # estão dentro das regras do jogo:
 
+def matriz(lin, col, val):
+  m = [[val] * col for _ in range(lin)]
+  return m
+
+a = matriz(9,9,0)
+
+
+def verificador(col,lin,valor):
+  
+  a[lin][col] = valor
+  
+  if a[lin][col] <= 0 or a[lin][col] > 9:
+      jogada = True
+      while jogada:
+        print("Jogada impossibilitada")
+        a[lin][col] = int(input('Digite um novo valor: '))
+        if a[lin][col] > 0 and a[lin][col] <= 9:
+          jogada = False
+  
+#VERIFICAR AS LINHAS
+  for j in range(col):
+    if a[lin][col] == a[lin][j]:
+      jogada = True
+      while jogada:
+        print("Jogada impossibilitada pela linha")
+        coluna,linha,val = input("Digite um novo valor: ").split(",")
+        coluna = int(coluna)
+        linha = int(linha)
+        val = int(val)
+        a[linha][coluna] = val
+        a[lin][col] = a[linha][coluna]
+        if a[lin][col] > 0 and a[lin][col] <= 9:
+          jogada = False
+    
+  for j in range(col+1, 9):
+    if a[lin][col] == a[lin][j]:
+      jogada = True
+      while jogada:
+        print("Jogada impossibilitada pela linha")
+        coluna,linha,val = input("Digite um novo valor: ").split(",")
+        coluna = int(coluna)
+        linha = int(linha)
+        val = int(val)
+        a[linha][coluna] = val
+        a[lin][col] = a[linha][coluna]
+        if a[lin][col] > 0 and a[lin][col] <= 9:
+          jogada = False
+    
+#VERIFICAR AS COLUNAS
+  for i in range(lin):
+    a[i][col]
+    if a[lin][col] == a[i][col]:
+      jogada = True
+      while jogada:
+        print("Jogada impossibilitada pela coluna 1")
+        coluna,linha,val = input("Digite um novo valor: ").split(",")
+        coluna = int(coluna)
+        linha = int(linha)
+        val = int(val)
+        a[linha][coluna] = val
+        a[lin][col] = a[linha][coluna]
+        if a[linha][coluna] > 0 and a[linha][coluna] <= 9:
+          jogada = False
+  for i in range(lin+1, 9):
+    a[i][col]
+    if a[lin][col] == a[i][col]:
+      jogada = True
+      while jogada:
+        print("Jogada impossibilitada pela coluna 2")
+        coluna,linha,val = input("Digite um novo valor: ").split(",")
+        coluna = int(coluna)
+        linha = int(linha)
+        val = int(val)
+        a[linha][coluna] = val
+        a[lin][col] = a[linha][coluna]
+        if a[lin][col] > 0 and a[lin][col] <= 9:
+          jogada = False
+
+
+
+repetidor = True
+while repetidor:
+  col,lin,valor = input().split(",")
+  col = int(col)
+  lin = int(lin)
+  valor = int(valor)
+  v = verificador(col,lin,valor)
+
+  for i in range(9):
+    for j in range(9):
+      print(f"[{a[i][j]:^3}]", end="")
+    print("")
+
 # 05 - Função que verifica se uma jogada coincide com uma pista:
 
 
