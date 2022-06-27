@@ -58,82 +58,119 @@ def matriz(lin, col, val):
   m = [[val] * col for _ in range(lin)]
   return m
 
-a = matriz(9,9,0)
 
 
 def verificador(col,lin,valor):
   
-  a[lin][col] = valor
-  
-  if a[lin][col] <= 0 or a[lin][col] > 9:
-      jogada = True
-      while jogada:
-        print("Jogada impossibilitada")
-        a[lin][col] = int(input('Digite um novo valor: '))
-        if a[lin][col] > 0 and a[lin][col] <= 9:
-          jogada = False
-  
-#VERIFICAR AS LINHAS
-  for j in range(col):
-    if a[lin][col] == a[lin][j]:
-      jogada = True
-      while jogada:
-        print("Jogada impossibilitada pela linha")
-        coluna,linha,val = input("Digite um novo valor: ").split(",")
-        coluna = int(coluna)
-        linha = int(linha)
-        val = int(val)
-        a[linha][coluna] = val
-        a[lin][col] = a[linha][coluna]
-        if a[lin][col] > 0 and a[lin][col] <= 9:
-          jogada = False
+#VERIFICAR OS QUADRADOS 3X3
+  passe = False
+  if lin <= 2 and col <=2:
+    for i in range(2):
+      for j in range(2):
+        if a[i][j] == valor :
+          print("Jogada impossibilitada pelo quadrado 3x3 A")
+          passe = True
+          break
+  if lin <= 2 and col > 2 and col <=6:
+    for i in range(2):
+      for j in range(3,6):
+        if a[i][j] == valor :
+          print("Jogada impossibilitada pelo quadrado 3x3")
+          passe = True
+          break
+  if lin <=2 and col >=7:
+    for i in range(2):
+      for j in range(6,9):
+        if a[i][j] == valor :
+          print("Jogada impossibilitada pelo quadrado 3x3")
+          passe = True
+          break
+  if lin >= 3 and lin <= 6 and col<=2:
+    for i in range(3,6):
+      for j in range(2):
+        if a[i][j] == valor :
+          print("Jogada impossibilitada pelo quadrado 3x3")
+          passe = True
+          break
+  if lin >= 3 and lin < 6 and col >=3 and col <= 6:
+    for i in range(3,6):
+      for j in range(3,6):
+        if a[i][j] == valor :
+          print("Jogada impossibilitada pelo quadrado 3x3")
+          passe = True
+          break
+  if lin >= 3 and lin <= 6 and col>= 7:
+    for i in range(3,6):
+      for j in range(6,9):
+        if a[i][j] == valor :
+          print("Jogada impossibilitada pelo quadrado 3x3")
+          passe = True
+          break
+  if lin >=7 and col <=2:
+    for i in range(6,9):
+      for j in range(2):
+        if a[i][j] == valor :
+          print("Jogada impossibilitada pelo quadrado 3x3")
+          passe = True
+          break
+  if lin >= 7 and col >=3 and col <=6:
+    for i in range(6,9):
+      for j in range(3,6):
+        if a[i][j] == valor :
+          print("Jogada impossibilitada pelo quadrado 3x3")
+          passe = True
+          break
+  if lin >= 7 and col >= 7:
+    for i in range(6,9):
+      for j in range(6,9):
+        if a[i][j] == valor :
+          print("Jogada impossibilitada pelo quadrado 3x3")
+          passe = True
+          break
+
+  if lin < 0 or col < 0 or valor <= 0 or lin > 8 or col > 8 or valor > 9:
     
-  for j in range(col+1, 9):
-    if a[lin][col] == a[lin][j]:
-      jogada = True
-      while jogada:
-        print("Jogada impossibilitada pela linha")
-        coluna,linha,val = input("Digite um novo valor: ").split(",")
-        coluna = int(coluna)
-        linha = int(linha)
-        val = int(val)
-        a[linha][coluna] = val
-        a[lin][col] = a[linha][coluna]
-        if a[lin][col] > 0 and a[lin][col] <= 9:
-          jogada = False
+    print("Jogada impossibilitada")
+    passe = True
+ 
+  while passe == False:
+
+    a[lin][col] = valor
     
-#VERIFICAR AS COLUNAS
-  for i in range(lin):
-    a[i][col]
-    if a[lin][col] == a[i][col]:
-      jogada = True
-      while jogada:
+  #VERIFICAR AS LINHAS
+    for j in range(col):
+      if a[lin][col] == a[lin][j]:
+        a[lin][col] = 0
+        print("Jogada impossibilitada pela linha")
+        print("Tente novamente")
+        break
+      
+    for j in range(col+1, 9):
+      if a[lin][col] == a[lin][j]:
+        a[lin][col] = 0
+        print("Jogada impossibilitada pela linha")
+        print("Tente novamente")
+        break
+      
+  #VERIFICAR AS COLUNAS
+
+    for i in range(lin):
+      a[i][col]
+      if a[lin][col] == a[i][col]:
+        a[lin][col] = 0
         print("Jogada impossibilitada pela coluna 1")
-        coluna,linha,val = input("Digite um novo valor: ").split(",")
-        coluna = int(coluna)
-        linha = int(linha)
-        val = int(val)
-        a[linha][coluna] = val
-        a[lin][col] = a[linha][coluna]
-        if a[linha][coluna] > 0 and a[linha][coluna] <= 9:
-          jogada = False
-  for i in range(lin+1, 9):
-    a[i][col]
-    if a[lin][col] == a[i][col]:
-      jogada = True
-      while jogada:
+        print("Tente novamente")
+        break
+    for i in range(lin+1, 9):
+      a[i][col]
+      if a[lin][col] == a[i][col]:
+        a[lin][col] = 0
         print("Jogada impossibilitada pela coluna 2")
-        coluna,linha,val = input("Digite um novo valor: ").split(",")
-        coluna = int(coluna)
-        linha = int(linha)
-        val = int(val)
-        a[linha][coluna] = val
-        a[lin][col] = a[linha][coluna]
-        if a[lin][col] > 0 and a[lin][col] <= 9:
-          jogada = False
+        print("Tente novamente")
+        break
+    passe = True
 
-
-
+a = matriz(9,9,0)
 repetidor = True
 while repetidor:
   col,lin,valor = input().split(",")
