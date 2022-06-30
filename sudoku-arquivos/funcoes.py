@@ -58,69 +58,67 @@ def matriz(lin, col, val):
   m = [[val] * col for _ in range(lin)]
   return m
 
-
-
 def verificador(col,lin,valor):
   
 #VERIFICAR OS QUADRADOS 3X3
   passe = False
-  if lin <= 2 and col <=2:
+  if lin-1 <= 2 and col-1 <=2:
     for i in range(2):
       for j in range(2):
         if a[i][j] == valor :
-          print("Jogada impossibilitada pelo quadrado 3x3 A")
+          print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin <= 2 and col > 2 and col <=6:
+  if lin-1 <= 2 and col-1 > 2 and col-1 <=6:
     for i in range(2):
       for j in range(3,6):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin <=2 and col >=7:
+  if lin-1 <=2 and col-1 >=7:
     for i in range(2):
       for j in range(6,9):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin >= 3 and lin <= 6 and col<=2:
+  if lin-1 >= 3 and lin-1 <= 6 and col-1 <=2:
     for i in range(3,6):
       for j in range(2):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin >= 3 and lin < 6 and col >=3 and col <= 6:
+  if lin-1 >= 3 and lin-1 < 6 and col-1 >=3 and col-1 <= 6:
     for i in range(3,6):
       for j in range(3,6):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin >= 3 and lin <= 6 and col>= 7:
+  if lin-1 >= 3 and lin-1 <= 6 and col-1 >= 7:
     for i in range(3,6):
       for j in range(6,9):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin >=7 and col <=2:
+  if lin-1 >=7 and col-1 <=2:
     for i in range(6,9):
       for j in range(2):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin >= 7 and col >=3 and col <=6:
+  if lin-1 >= 7 and col-1 >=3 and col-1 <=6:
     for i in range(6,9):
       for j in range(3,6):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin >= 7 and col >= 7:
+  if lin-1 >= 7 and col-1 >= 7:
     for i in range(6,9):
       for j in range(6,9):
         if a[i][j] == valor :
@@ -128,44 +126,28 @@ def verificador(col,lin,valor):
           passe = True
           break
 
-  if lin < 0 or col < 0 or valor <= 0 or lin > 8 or col > 8 or valor > 9:
+  if lin-1 < 0 or col-1 < 0 or valor <= 0 or lin-1 > 9 or col-1 > 9 or valor > 9:
     
     print("Jogada impossibilitada")
     passe = True
  
   while passe == False:
 
-    a[lin][col] = valor
+    a[lin-1][col-1] = valor
     
   #VERIFICAR AS LINHAS
-    for j in range(col):
-      if a[lin][col] == a[lin][j]:
-        a[lin][col] = 0
+    for j in range(9):
+      if a[lin-1][col-1] == a[lin-1][j] and j!= col-1 and a[lin-1][col-1] > 0:
+        a[lin-1][col-1] = 0
         print("Jogada impossibilitada pela linha")
         print("Tente novamente")
         break
-      
-    for j in range(col+1, 9):
-      if a[lin][col] == a[lin][j]:
-        a[lin][col] = 0
-        print("Jogada impossibilitada pela linha")
-        print("Tente novamente")
-        break
-      
   #VERIFICAR AS COLUNAS
 
-    for i in range(lin):
-      a[i][col]
-      if a[lin][col] == a[i][col]:
+    for i in range(9):
+      if a[lin-1][col-1] == a[i][col-1] and i != lin-1 and a[lin-1][col-1] > 0:
         a[lin][col] = 0
-        print("Jogada impossibilitada pela coluna 1")
-        print("Tente novamente")
-        break
-    for i in range(lin+1, 9):
-      a[i][col]
-      if a[lin][col] == a[i][col]:
-        a[lin][col] = 0
-        print("Jogada impossibilitada pela coluna 2")
+        print("Jogada impossibilitada pela coluna")
         print("Tente novamente")
         break
     passe = True
