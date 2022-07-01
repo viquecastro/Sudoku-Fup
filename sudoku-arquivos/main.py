@@ -24,7 +24,7 @@ except:
     dicas = fun.acessarArquivo(arquivoPistas)
     dicas = fun.organizarEntradas(dicas)
     fun.montarGrade(dicas)
-    valida = True
+    valida_pistas = True
     jogo= True
     lista_jogadas = []
     if valida:
@@ -36,7 +36,7 @@ except:
             if jogada[0] == 'D' and len(jogada) == 4:
                 pass
             else:
-                valida = True
+                valida = verificador(jogada[0], jogada[2], jogada[4])
                 if valida:
                     compara = 1
                     if compara:
