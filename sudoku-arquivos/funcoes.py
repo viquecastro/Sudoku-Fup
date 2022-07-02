@@ -138,7 +138,7 @@ def verificador(col,lin,valor):
   #VERIFICAR AS LINHAS
     for j in range(9):
       if a[lin-1][col-1] == a[lin-1][j] and j!= col-1 and a[lin-1][col-1] > 0:
-        a[lin-1][col-1] = 0
+        a[lin-1][col-1] = " "
         print("Jogada impossibilitada pela linha")
         print("Tente novamente")
         break
@@ -146,17 +146,17 @@ def verificador(col,lin,valor):
 
     for i in range(9):
       if a[lin-1][col-1] == a[i][col-1] and i != lin-1 and a[lin-1][col-1] > 0:
-        a[lin-1][col-1] = 0
+        a[lin-1][col-1] = " "
         print("Jogada impossibilitada pela coluna")
         print("Tente novamente")
         break
     passe = True
 
-a = matriz(9,9,0)
+a = matriz(9,9,"")
 repetidor = True
 while repetidor:
   x = input()
-  v = x.replace("=",",")
+  v = x.replace(":",",")
   v = list(v.split(","))
   v[0] = int(v[0])
   v[1] = int(v[1])
