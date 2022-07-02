@@ -146,7 +146,7 @@ def verificador(col,lin,valor):
 
     for i in range(9):
       if a[lin-1][col-1] == a[i][col-1] and i != lin-1 and a[lin-1][col-1] > 0:
-        a[lin-1][col-1] = " "
+        a[lin-1][col-1] = ""
         print("Jogada impossibilitada pela coluna")
         print("Tente novamente")
         break
