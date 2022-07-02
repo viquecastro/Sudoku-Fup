@@ -63,62 +63,62 @@ def verificador(col,lin,valor):
 #VERIFICAR OS QUADRADOS 3X3
   passe = False
   if lin-1 <= 2 and col-1 <=2:
-    for i in range(2):
-      for j in range(2):
+    for i in range(3):
+      for j in range(3):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin-1 <= 2 and col-1 > 2 and col-1 <=6:
-    for i in range(2):
+  elif lin-1 <= 2 and col-1 > 2 and col-1 <= 5:
+    for i in range(3):
       for j in range(3,6):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin-1 <=2 and col-1 >=7:
-    for i in range(2):
+  elif lin-1 <=2 and col-1 >= 6:
+    for i in range(3):
       for j in range(6,9):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin-1 >= 3 and lin-1 <= 6 and col-1 <=2:
+  elif lin-1 >= 3 and lin-1 <= 5 and col-1 <= 2:
     for i in range(3,6):
-      for j in range(2):
+      for j in range(3):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin-1 >= 3 and lin-1 < 6 and col-1 >=3 and col-1 <= 6:
+  elif lin-1 >= 3 and lin-1 <= 5 and col-1 >=3 and col-1 <= 5:
     for i in range(3,6):
       for j in range(3,6):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin-1 >= 3 and lin-1 <= 6 and col-1 >= 7:
+  elif lin-1 >= 3 and lin-1 <= 5 and col-1 >= 6:
     for i in range(3,6):
       for j in range(6,9):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin-1 >=7 and col-1 <=2:
+  elif lin-1 >=6 and col-1 <=2:
     for i in range(6,9):
-      for j in range(2):
+      for j in range(3):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin-1 >= 7 and col-1 >=3 and col-1 <=6:
+  elif lin-1 >= 6 and col-1 >= 3 and col-1 <= 5:
     for i in range(6,9):
       for j in range(3,6):
         if a[i][j] == valor :
           print("Jogada impossibilitada pelo quadrado 3x3")
           passe = True
           break
-  if lin-1 >= 7 and col-1 >= 7:
+  elif lin-1 >= 6 and col-1 >= 6:
     for i in range(6,9):
       for j in range(6,9):
         if a[i][j] == valor :
@@ -146,7 +146,7 @@ def verificador(col,lin,valor):
 
     for i in range(9):
       if a[lin-1][col-1] == a[i][col-1] and i != lin-1 and a[lin-1][col-1] > 0:
-        a[lin][col] = 0
+        a[lin-1][col-1] = 0
         print("Jogada impossibilitada pela coluna")
         print("Tente novamente")
         break
@@ -155,11 +155,13 @@ def verificador(col,lin,valor):
 a = matriz(9,9,0)
 repetidor = True
 while repetidor:
-  col,lin,valor = input().split(",")
-  col = int(col)
-  lin = int(lin)
-  valor = int(valor)
-  v = verificador(col,lin,valor)
+  x = input()
+  v = x.replace("=",",")
+  v = list(v.split(","))
+  v[0] = int(v[0])
+  v[1] = int(v[1])
+  v[2] = int(v[2])
+  v = verificador(v[0],v[1],v[2])
 
   for i in range(9):
     for j in range(9):
