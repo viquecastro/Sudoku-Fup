@@ -172,11 +172,48 @@ while repetidor:
 
 
 # 06 - Função que verifica se uma jogada é válida:
-
+def validar(jogadaa):
+    col=['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
+    jogadaa=input()
+    jogada=jogadaa.replace(':',',')
+    jogada=jogada.split(',',2)
+#transformando as celulas da lista nos seus respectivos tipos corretos
+    j=jogada[0].upper()
+    i=int(jogada[1])
+    k=int(jogada[2])
+#condições pra validar a jogada
+    if type(j)!=str or type(i)!=int or type(k)!=int or j not in col or i>9 or i<1 or k>9 or k<1:
+        print('Jogada Inválida.Entre um novo valor.') 
+        return validar
+    else:
+        print('Jogada Válida.')
 
 # 07 - Função que deleta uma jogada requerida pelo jogador:
+def d(m,n):
+    matriz(9,9,' ')
+    
+    if type(matriz[n][m]) == str:
+        print('Uma pista não pode ser apagada')
+    else:
+        matriz[n][m] = ' '
+        
+ 
+ # 08 - Função que converte os números da coluna em letras:
+  def num_letra(valor):
+    col={'A':1, 'B':2, 'C':3, 'D':4, 'E':5, 'F':6, 'G':7, 'H':8, 'I':9}
+
+    for c in col:
+        if valor==col[c]:
+            print(c)
 
 
+ # 09 - Função que converte letras da coluna em números:
+  def letra_num(valor):
+    col=['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
+    valor = valor.upper()
+    for i in range(10):
+        if valor == col[i-1]:
+            print(i)
 
 
 
